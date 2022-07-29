@@ -31,10 +31,15 @@ Benefits of using objects:
   - Making it easier to reuse code.
 
 ### Basic terminology:
-- **Object:** The instance of a class / it's the working entity of class
-- **Class:** This is the model or standard about the capability of what an object can do
+
+![Class and object](https://cdn-images.visual-paradigm.com/guide/uml/uml-class-diagram-tutorial/01-uml-base-class-and-object-explained.png)
+
+- **Object:** These are the real world entities having a specific identity, specific characteristics and behavior you find in your everyday life.
+- **Class:** This is the model or standard about the capability of what an object can do. It is the blueprint that represents a set of objects that share common characteristics and behavior.
+  - ‘Object’ is an instance of ‘class’. For example, ‘bird’ is a class but ‘eagle’ is an object.
 - **Method:** Can modify a class state that would apply across all the instances of the class
 - **Instance:** These are like objects, however, let's think about it in these terms: A blueprint for a car design is the class description, all the cars manufactured from that blueprint are objects of that class. Your car that has been made from that blueprint is an instance of that class.
+
 
 OOP languages are diverse, but the most popular ones are **class-based** languages in which objects are instances of **classes**.
 
@@ -46,15 +51,105 @@ For every new car we make we would use the car object. We can have a 2009 blue B
 ### The 4 Pillars (or main principles) of OOP
 
 ### Encapsulation:
-All properties and methods of an object are kept private and safe from interference by other objects. In each object we can have private, protected and public variables and methods.
-Private variables and methods cannot be called or used by other objects, whereas public ones can. Attributes with the access modifier protected can be accessed within your class, by all classes within the same file and by all subclasses within the same file or other files.
-The protected modifier is mostly used for internal methods that need to be called or overridden by subclasses.
+Say we have a program. It has a few logically different objects which communicate with each other, according to the rules defined in the program.
 
-Let's look at our car. The attributes such as colour, year and model would be private variables. They can not be changed by other objects.
-In turn we can have a public method called 'Start'. Other objects, for instance a Person object, would be able to call this method.
+Encapsulation is achieved when each object keeps its state **private** inside a class. Other objects **do not** have direct access to this state. Instead, they can only call a list of **public** functions (called methods).
+
+The object manages its own state via methods and no other class can touch it unless explicitly allowed. If you want to communicate with the object, you should use the methods provided. But (by default), you can't change the state.
+
+As an example for encapsulation let's build a tiny Sims game. There are people and there is a cat. They communicate with each other. We want to apply encapsulation, so we encapsulate **all** "cat" logic into a `Cat` class. It may look like this:
+
+![Cat class](https://cdn-media-1.freecodecamp.org/images/M4t8zW9U71xeKSlzT2o8WO47mdzrWkNa4rWv)
+You can feed the cat. But you can't directly change how hungry the cat is.
+
+As we can see the "state" of the cat is the private variables `mood`, `hungry` and `energy`. It also has a private method `meow()`. It can call it whenever it wants, the other classes can't tell the cat when to meow.
+
+What they can do is defined in the **public methods** `sleep()`, `play()` and `feed()`. Each of them modifies the internal state somehow and may invoke `meow()`. Thus, the binding between the private state and public methods is made.
+
+This is what **encapsulation** does.
 
 ### Abstraction:
+Abstraction can be thought of as a natural extension of encapsulation.
 
+In object-oriented design, programs are often extremely large. And separate objects communicate with each other a lot. So maintaining a large codebase, with changes along the way, is difficult.
+
+**Abstraction** is a concept aiming to ease this problem.
+
+Applying abstraction means that each object should only expose a high-level mechanism for using it.
+
+This mechanism should hide internal implementation details. It should only reveal operations relevant for the other objects.
+
+A real-life example of abstraction? Think about how you use your phone:
+
+![Abstraction visual](https://cdn-media-1.freecodecamp.org/images/hiX0NQOcZFShroq-a3FM5pFP2LV4UUI5mLle)
+
+You interact with you phone by using only a few buttons. What's going on under the hood? You don't have to know, implementation details are hidden. You only need to know a short set of actions.
+
+Implementation changes, for example a software update, rarely affect the abstraction you use.
+
+### Inheritance:
+OK, encapsulation and abstraction can help us develop and maintain a big codebase. But what is another problem in OOP design?
+
+That objects are often very similar. They share common logic, but they are not **entirely** the same.
+
+So here arises the question: How do we reuse the common logic and extract the unique logic into a separate class? One way to achieve this is **inheritance**.
+
+Inheritance is the ability of one object to acquire some/all properties of another object. For example, a child inherits the traits of his/her parents.
+With inheritance, reusability is a major advantage. The child class reuses the fields and methods of the parent class and can implement its own.
+
+![Inheritance](https://cdn-media-1.freecodecamp.org/images/ZIm7lFjlrKeMWxcH8fqBapNkuSJIxW9-t9yf)
+*A private teacher is a type of teacher. And any teacher is a type of person.*
+
+If you have a program that needs to manage public and private teachers, but also other types of people like students, we can implement the above class hierarchy.
+In this way, each class adds only what is necessary for it while reusing common logic with the parent classes.
+
+### Polymorphism
+The most complex word! Polymorphism, in Greek it stands for ***many shapes***.
+
+When you think of polymorphism you should think about adaptation, changing behaviour depending on the data it's given.
+Let's use the + sign for example. In JavaScript the + sign polymorphs depending on what data we give it. 
+For example:
+  - It can add up 2 numbers, `20 + 20 = 40`
+  - We can also give it 2 strings `"Hello" + "World"` that will concatenate to `"Hello World"`
+  - Or we can have a string and a number `"Hello " + "44"` which will give us `"Hello 44"`
+
+This is polymorphism, it changes its behaviour depending on what circumstances we throw at it.
+
+So it is the process of using an operator or function in different ways for different data input. In practical terms, polymorphism means that if class B inherits from class A, it doesn't have to inherit everything about class A.
+It can do some of the things that class A does differently.
+
+Let's look at a php example:
+```php
+  
+    abstract class Shape {
+        private $x = 0;
+        private $y = 0;
+    
+        public abstract function area();
+    }
+
+    class Rectangle extends Shape {
+        function __construct($x, $y){
+            $this->x = $x;
+            $this->y = $y;
+        }
+        function area(){
+            return $this->x * $this->y;
+        }
+    }
+
+    class Square extends Shape {
+        function __construct($x){
+            $this->x = $x;
+        }
+        
+        function area() {
+            return $this->x * $this->x;
+        }
+    }
+
+    $shapes = [ new Square(6), new Rectangle(10, 5), new Square(9) ];
+```
 
 ## SOLID
 
@@ -99,4 +194,5 @@ The ***Dependency Inversion Principle*** states that our classes should depend u
 
 [The Four Pillars of Object  Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)
 [Object-Oriented Programming for Kids](https://funtech.co.uk/latest/explain-object-oriented-programming-to-kids#:~:text=The%20simplest%20way%20to%20explain,size%20and%20year%20as%20attributes.)
+[How to explain object-oriented programming concepts to a 6-year-old](https://www.freecodecamp.org/news/object-oriented-programming-concepts-21bb035f7260/)
 [The SOLID Principles of Object-Oriented Programming Explained in Plain English](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/)
