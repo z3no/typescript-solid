@@ -4,4 +4,4 @@
 .parcel-cache
 dist
 
-tsconfig.json
+helloTypescript/tsconfig.json
