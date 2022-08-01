@@ -1,4 +1,4 @@
-class FuelTank {
+export class FuelTank {
     private _fuel : number = 0;
     private readonly MAXIMUM_FUEL_CAPACITY: number;
 
@@ -13,4 +13,9 @@ class FuelTank {
     consumeFuel() {
         this._fuel -= 1;
     }
+
+    get fuel(): number {
+        return this._fuel;
+    }
+
 }
