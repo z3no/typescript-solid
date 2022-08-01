@@ -163,6 +163,17 @@ The ***Single Responsibility Principle*** states that **a Class should do one th
 
 If a Class has many responsibilities it increases the possibility of bugs because making changes to one of its responsibilities. It could affect the other ones without knowing.
 
+#### To Do:
+
+- [ ] Refactor the code from old.ts
+- What we need:
+  - [ ] Car class
+  - [ ] Engine class
+  - [ ] MusicPlayer class
+  - [ ] The fuel functionality should go...
+- Extra challenge:
+  - [ ] Make a new type of Engine that also consumes Fuel
+
 #### Goal:
 This principle aims to separate behaviours so that if bugs arise as a result of your change it won't affect other unrelated behaviours.
 
