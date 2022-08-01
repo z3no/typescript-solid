@@ -31,6 +31,10 @@ export class Car {
         return this._engine;
     }
 
+    get fuelTank(): FuelTank {
+        return this._fuelTank;
+    }
+
     //When a value can only go one way (you add fuel, consuming fuel is handled by the car itself)
     // it is better to provide a specific method for this instead of a generic setter.
     // with a setter there is always the chance of somebody lowering the fuel amount by accident.
