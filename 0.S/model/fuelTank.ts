@@ -6,16 +6,16 @@ export class FuelTank {
         this.MAXIMUM_FUEL_CAPACITY = MAXIMUM_FUEL_CAPACITY;
     }
 
+    get fuel(): number {
+        return this._fuel;
+    }
+
     addFuel(fuel : number) {
         this._fuel = Math.min(fuel + this._fuel, this.MAXIMUM_FUEL_CAPACITY);
     }
 
     consumeFuel() {
         this._fuel -= 1;
-    }
-
-    get fuel(): number {
-        return this._fuel;
     }
 
 }
