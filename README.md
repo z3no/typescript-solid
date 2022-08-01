@@ -164,13 +164,13 @@ The ***Single Responsibility Principle*** states that **a Class should do one th
 If a Class has many responsibilities it increases the possibility of bugs because making changes to one of its responsibilities. It could affect the other ones without knowing.
 
 #### To Do:
-
-- [ ] Refactor the code from old.ts
+- [x] Refactor the code from old.ts
 - What we need:
-  - [ ] Car class
-  - [ ] Engine class
-  - [ ] MusicPlayer class
-  - [ ] The fuel functionality should go...
+  - [x] Car class
+  - [x] Engine class
+  - [x] MusicPlayer class
+  - [x] Also added a fuel tank
+  - [x] The fuel functionality should go... I created a new method that consumes fuel and put the addfuel method in a class named fuelTank.
 - Extra challenge:
   - [ ] Make a new type of Engine that also consumes Fuel
 
@@ -182,6 +182,14 @@ This principle aims to separate behaviours so that if bugs arise as a result of 
 The ***Open-Closed Principle*** requires that **Classes should be open for extension and closed to modification.**
 
 **Modification** means changing the code of an existing Class and **extension** means adding new functionality.
+
+#### To Do:
+- [ ] Refactor the code from old.ts
+- What we need:
+  - [ ] Add an animal
+  - [ ] Make sure it makes a sound
+  - [ ] Create a `makeSound` function to each Animal class
+  - [ ] Remove the giant switch from the Zoo class
 
 ### **L** - Liskov Substitution Principle
 
