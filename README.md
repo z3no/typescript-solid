@@ -342,13 +342,13 @@ And finally, we can leave the dangerous stuff to the reckless people:
 - [x] Look at the 2 different users
   - User
   - Admin
-- [ ] Each authentication method should have its own interface
-  - [ ] password
-  - [ ] google
-  - [ ] facebook
+- [x] Each authentication method should have its own interface
+  - [x] password
+  - [x] google
+  - [x] facebook
 - Extra difficulty
-  - [ ] Make a google bot class
-  - [ ] Can only use google option to log in
+  - [x] Make a Google bot class
+  - [x] Can only use the Google option to log in
 
 - Step 2 (optional):
   - Google and Facebook code is almost identical
