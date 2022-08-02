@@ -268,12 +268,12 @@ We can solve this in the following way:
 By implementing a `Shape` interface that will have to be implemented by every new shape we add. We can then use the area() method and make it return the right calculations for each new shape.
 
 #### To Do:
-- [ ] Refactor the Discount Class from old.ts
+- [x] Refactor the Discount Class from old.ts, made an interface from Discount
 - What we need:
-  - [ ] An Interface
-  - [ ] VariableDiscount class
-  - [ ] FixedDiscount class
-  - [ ] NoDiscount class
+  - [x] An Interface
+  - [x] VariableDiscount class
+  - [x] FixedDiscount class
+  - [x] NoDiscount class
 
 ### **I** - Interface Segregation Principle
 
