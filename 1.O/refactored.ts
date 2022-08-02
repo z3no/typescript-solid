@@ -1,32 +1,27 @@
-class Zoo {
-    private _animals : Array<Object> = new Array<Object>();
+import {Animal} from "./model/animal";
+import {Parrot} from "./model/parrot";
+import {Cat} from "./model/cat";
+import {Dog} from "./model/dog";
+import {Lion} from "./model/lion";
 
-    public addAnimal(animal: object) {
+class Zoo {
+    private _animals : Array<Animal> = new Array<Animal>();
+
+    public addAnimal(animal: Animal) {
         this._animals.push(animal);
     }
 
-    get animals(): Array<Object> {
+    get animals(): Array<Animal> {
         return this._animals;
     }
-
-    public makeSound(animal: object) : string {
-        switch(animal.type) {
-            case 'cat':
-                return 'Miauw';
-            case 'dog':
-                return 'Woef';
-            case 'parrot':
-                return 'I am a pirate';
-            default:
-                throw new Error('Unknown type: '+ animal.type);
-        }
-    }
 }
+
 let zoo = new Zoo;
-zoo.addAnimal(new Cat);
-zoo.addAnimal(new Dog);
-zoo.addAnimal(new Parrot);
+zoo.addAnimal(new Parrot('Gizmo', 'Parrot', 'Pretty bird!'));
+zoo.addAnimal(new Cat('Minoes', 'Cat', 'Miauw!'));
+zoo.addAnimal(new Dog('Oscar', 'Dog', 'Woef, Woef!'));
+zoo.addAnimal(new Lion('Zuba', 'Lion', 'GROAR!'));
 
 zoo.animals.forEach((animal) => {
-    document.querySelector('#target').innerHTML += (animal.type + ": " + zoo.makeSound(animal) + "<br>");
+    document.querySelector('#target').innerHTML += (animal.name + " is a " + animal.type + ": " + animal.sound + "<br>");
 });
