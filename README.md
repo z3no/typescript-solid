@@ -226,6 +226,55 @@ This means that, given Class B is a subclass of Class A, we should be able to pa
 
 When we use **inheritance** we assume that the child class inherits everything that the superclass has. The child class extends the behaviour but **never** narrows it down.
 
+Let's jump to some code to help us understand this concept:
+
+```typescript
+    class Rectangle {
+        constructor(private _width: number, private _height: number) {}
+
+        public area() : number {
+            return this._height * this._width;
+        }
+    }
+    
+    class Square extends Rectangle {}
+```
+This is a classic example that is a violation of this principle, the [Rectangle-Square problem](http://www.blackwasp.co.uk/SquareRectangle.aspx).
+The `Square` class extends the `Rectangle` class and assumes that the width and height are equal. When calculating the area of a square, we would get the wrong value.
+
+We can solve this in the following way:
+
+```typescript
+    interface Shape {
+        area(): number;
+    }
+
+    class Rectangle implements Shape {
+        constructor(private _width: number, private _height: number) {}
+
+        public area(): number {
+            return this._height * this._width;
+        }
+    }
+
+    class Square implements Shape {
+        constructor(private _height:number) {}
+  
+        public area(): number {
+            return Math.pow(this._height, 2);
+        }
+    }
+```
+By implementing a `Shape` interface that will have to be implemented by every new shape we add. We can then use the area() method and make it return the right calculations for each new shape.
+
+#### To Do:
+- [ ] Refactor the Discount Class from old.ts
+- What we need:
+  - [ ] An Interface
+  - [ ] VariableDiscount class
+  - [ ] FixedDiscount class
+  - [ ] NoDiscount class
+
 ### **I** - Interface Segregation Principle
 
 **Segregation** means keeping things separated and the ***Interface Segregation Principle*** is about separating the interfaces.
