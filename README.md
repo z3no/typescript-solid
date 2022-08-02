@@ -358,9 +358,73 @@ And finally, we can leave the dangerous stuff to the reckless people:
 
 The ***Dependency Inversion Principle*** states that our classes should depend upon interfaces or abstract classes instead of concrete classes and functions.
 
+![Dependency Inversion Principle](https://miro.medium.com/max/1400/1*Qk8tDmjQlyvwKxNTfXIo0Q.png)
+
+An example:
+
+```typescript
+    class MemoryStorage {
+        private _storage: any[];
+
+        constructor() {
+            this._storage = [];
+        }
+        
+        public insert(record:any):void {
+            this._storage.push(record);
+        }
+    }
+    
+    class PostService {
+        private _db = new MemoryStorage();
+        
+        public createPost(title:string) {
+            this._db.insert(title);
+        }
+    }
+```
+Here, the PostService class depends on the `MemoryStorage` class to save new posts. What happens if we need to change the storage used to save posts?
+We'll have to modify the `PostService` class to change the type of the `_db` property, thus violating the **Open-Closed Principle**.
+
+If `PostService` relies on an interface instead of a class, we wouldn't have to make changes on it.
+
+```typescript
+    interface DatabaseStorage {
+  insert(record: any): void;
+}
+
+class MemoryStorage implements DatabaseStorage {
+  private _storage: any[];
+
+  constructor() {
+    this._storage = [];
+  }
+
+  public insert(record: any): void {
+    this._storage.push(record);
+  }
+}
+
+class PostService {
+  private _db: DatabaseStorage;
+
+  constructor(db: DatabaseStorage) {
+      this._db = db;
+  }
+
+  public createPost(title: string) {
+    this._db.insert(title);
+  }
+}
+```
+
+The SOLID principles represent the cornerstone of ***state-of-the-art*** software. When combined, they make it easier for programmers to develop code that's easier to understand, extend and maintain.
+
+
 ## Resources:
 
 [The Four Pillars of Object  Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)
 [Object-Oriented Programming for Kids](https://funtech.co.uk/latest/explain-object-oriented-programming-to-kids#:~:text=The%20simplest%20way%20to%20explain,size%20and%20year%20as%20attributes.)
 [How to explain object-oriented programming concepts to a 6-year-old](https://www.freecodecamp.org/news/object-oriented-programming-concepts-21bb035f7260/)
 [The SOLID Principles of Object-Oriented Programming Explained in Plain English](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/)
+[SOLID principles using Typescript](https://medium.com/@alejandromarr/solid-principles-using-typescript-c475031efcd3)
