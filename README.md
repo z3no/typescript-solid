@@ -59,7 +59,7 @@ The object manages its own state via methods and no other class can touch it unl
 
 As an example for encapsulation let's build a tiny Sims game. There are people and there is a cat. They communicate with each other. We want to apply encapsulation, so we encapsulate **all** "cat" logic into a `Cat` class. It may look like this:
 
-![Cat class](https://cdn-media-1.freecodecamp.org/images/M4t8zW9U71xeKSlzT2o8WO47mdzrWkNa4rWv)
+![Cat class](images/encapsulation.jpg)
 You can feed the cat. But you can't directly change how hungry the cat is.
 
 As we can see the "state" of the cat is the private variables `mood`, `hungry` and `energy`. It also has a private method `meow()`. It can call it whenever it wants, the other classes can't tell the cat when to meow.
@@ -81,9 +81,9 @@ This mechanism should hide internal implementation details. It should only revea
 
 A real-life example of abstraction? Think about how you use your phone:
 
-![Abstraction visual](https://cdn-media-1.freecodecamp.org/images/hiX0NQOcZFShroq-a3FM5pFP2LV4UUI5mLle)
+![Abstraction visual](images/abstraction.jpg)
 
-You interact with you phone by using only a few buttons. What's going on under the hood? You don't have to know, implementation details are hidden. You only need to know a short set of actions.
+You interact with your phone by using only a few buttons. What's going on under the hood? You don't have to know, implementation details are hidden. You only need to know a short set of actions.
 
 Implementation changes, for example a software update, rarely affect the abstraction you use.
 
@@ -97,7 +97,7 @@ So here arises the question: How do we reuse the common logic and extract the un
 Inheritance is the ability of one object to acquire some/all properties of another object. For example, a child inherits the traits of his/her parents.
 With inheritance, reusability is a major advantage. The child class reuses the fields and methods of the parent class and can implement its own.
 
-![Inheritance](https://cdn-media-1.freecodecamp.org/images/ZIm7lFjlrKeMWxcH8fqBapNkuSJIxW9-t9yf)
+![Inheritance](images/inheritance.jpg)
 *A private teacher is a type of teacher. And any teacher is a type of person.*
 
 If you have a program that needs to manage public and private teachers, but also other types of people like students, we can implement the above class hierarchy.
@@ -116,7 +116,7 @@ For example:
 This is polymorphism, it changes its behaviour depending on what circumstances we throw at it.
 
 So it is the process of using an operator or function in different ways for different data input. In practical terms, polymorphism means that if class B inherits from class A, it doesn't have to inherit everything about class A.
-It can do some of the things that class A does differently.
+It can do some things that class A does differently.
 
 Let's look at a php example:
 ```php
