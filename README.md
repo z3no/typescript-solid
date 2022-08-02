@@ -182,6 +182,8 @@ This principle aims to separate behaviours so that if bugs arise as a result of 
 The ***Open-Closed Principle*** requires that **Classes should be open for extension and closed for modification.**
 In doing so, we stop ourselves from modifying existing code and causing potential new bugs in an otherwise ***happy*** application.
 
+![Open-Closed Principle](https://miro.medium.com/max/1400/1*0MtFBmm6L2WVM04qCJOZPQ.png)
+
 **Modification** means changing the code of an existing Class and **extension** means adding new functionality.
 
 Let's explore the concept with a quick code example. Imagine we have implemented a Guitar class. 🎸 It's fully fledged and even has a volume knob:
@@ -223,6 +225,8 @@ By **extending** the Guitar class we can be sure that our existing app won't be 
 The ***Liskov Substitution Principle*** states that subclasses should be substitutable for their base classes.
 
 This means that, given Class B is a subclass of Class A, we should be able to pass an object of Class B to any method that expects an object of Class A and the method should not give any weird output in that case.
+
+![Liskov Substitution Principle](https://miro.medium.com/max/1400/1*yKk2XKJaCLNlDxQMx1r55Q.png)
 
 When we use **inheritance** we assume that the child class inherits everything that the superclass has. The child class extends the behaviour but **never** narrows it down.
 
@@ -279,7 +283,76 @@ By implementing a `Shape` interface that will have to be implemented by every ne
 
 **Segregation** means keeping things separated and the ***Interface Segregation Principle*** is about separating the interfaces.
 
+![Interface Segregation Principle](https://miro.medium.com/max/1400/1*2hmyR9L43Vm64MYxj4Y89w.png)
+
 The principle states that many client-specific interfaces are better than one general-purpose interface. Clients should not be forced to implement a function they do not need.
+
+I found this fun example with a zookeeper, to be more specific, he'll be working in the bear enclosure.
+So we start with an interface that outlines the roles of a bear keeper:
+
+```typescript
+    interface BearKeeper {
+        washTheBear():void;
+        feedTheBear():void;
+        petTheBear():void;
+    }
+```
+As zookeepers, we're more than happy to wash and feed our beloved bear. Because we're all too aware of the dangers of petting them.
+Unfortunately, our interface is rather large, and we have no choice but to implement the code to pet the bear.
+Let's fix this by **splitting** our large interface into three separate ones:
+
+```typescript
+    interface BearCleaner {
+        washTheBear():void;
+    }
+    
+    interface BearFeeder {
+        feedTheBear():void;
+    }
+    
+    interface BearPetter {
+        petTheBear():void;
+    }
+```
+Thanks to interface segregation, we're free to implement only the methods that matter to us:
+
+```typescript
+    class BearCarer implements BearCleaner, BearFeeder {
+        washTheBear():void {
+            //I think we missed a spot...
+        }
+        
+        feedTheBear():void {
+            //Tuna Tuesdays...
+        }
+    }
+```
+And finally, we can leave the dangerous stuff to the reckless people:
+
+```typescript
+    class CrazyPerson implements BearPetter {
+        public petTheBear():void {
+            //Good luck with that!
+        }
+    }
+```
+
+#### To Do:
+- [ ] Refactor old.ts
+- [x] Look at the 2 different users
+  - User
+  - Admin
+- [ ] Each authentication method should have its own interface
+  - [ ] password
+  - [ ] google
+  - [ ] facebook
+- Extra difficulty
+  - [ ] Make a google bot class
+  - [ ] Can only use google option to log in
+
+- Step 2 (optional):
+  - Google and Facebook code is almost identical
+  - [ ] Refactor this code to small, separate dependencies
 
 ### **D** - Dependency Inversion Principle
 
