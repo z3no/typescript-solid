@@ -53,7 +53,7 @@ class NoDiscount implements Discount{
 
     private _value: number;
 
-    constructor(value: number) {
+    constructor(value: number = 0) {
         this._value = value;
     }
 
@@ -116,6 +116,10 @@ class shoppingBasket {
 
 let cart = new shoppingBasket();
 cart.addProduct(new Product('Chair', 25, new FixedDiscount(10)));
+//cart.addProduct(new Product('Chair', 25, new FixedDiscount(-10))); -- = + it adds up
+cart.addProduct(new Product('Table', 50, new VariableDiscount(25)));
+cart.addProduct(new Product('Bed', 100, new NoDiscount()));
+cart.addProduct(new Product('Sofa', 1099, new VariableDiscount(30)));
 
 const tableElement = <HTMLTableElement> document.querySelector('#cart tbody');
 
