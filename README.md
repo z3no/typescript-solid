@@ -179,17 +179,17 @@ This principle aims to separate behaviours so that if bugs arise as a result of 
 
 ### **O** - Open-Closed Principle
 
-The ***Open-Closed Principle*** requires that **Classes should be open for extension and closed to modification.**
+The ***Open-Closed Principle*** requires that **Classes should be open for extension and closed for modification.**
 
 **Modification** means changing the code of an existing Class and **extension** means adding new functionality.
 
 #### To Do:
-- [ ] Refactor the code from old.ts
+- [x] Refactor the code from old.ts
 - What we need:
-  - [ ] Add an animal
-  - [ ] Make sure it makes a sound
-  - [ ] Create a `makeSound` function to each Animal class
-  - [ ] Remove the giant switch from the Zoo class
+  - [x] Add an animal
+  - [x] Make sure it makes a sound
+  - [x] Create a `makeSound` function to each Animal class
+  - [x] Remove the giant switch from the Zoo class
 
 ### **L** - Liskov Substitution Principle
 
