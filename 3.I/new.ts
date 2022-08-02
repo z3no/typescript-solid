@@ -92,27 +92,38 @@ let googleBot = new GoogleBot();
 document.querySelector('#login-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    let user = loginAsAdminElement.checked ? admin : guest;
+    let user;
 
-    if(!loginAsAdminElement.checked) {
-        user.setGoogleToken('secret_token_google');
-        user.setFacebookToken('secret_token_fb');
+    if(loginAsAdminElement.checked) {
+        user = admin;
+    } else if (!loginAsAdminElement.checked && typeGoogleElement.checked){
+        user = googleBot;
+    } else {
+        user = guest;
     }
     debugger;
 
     let auth = false;
-    switch(true) {
-        case typePasswordElement.checked:
+    if(user === guest){
+        user.setFacebookToken('secret_token_fb');
+        switch(true) {
+            case typePasswordElement.checked:
+                auth = user.checkPassword(passwordElement.value);
+                break;
+            case typeFacebookElement.checked:
+                debugger;
+                auth = user.getFacebookLogin('secret_token_fb');
+                break;
+        }
+    } else if(user === googleBot) {
+        user.setGoogleToken('secret_token_google');
+        auth = user.checkGoogleLogin('secret_token_google');
+    } else if(user === admin) {
+        if (!typeGoogleElement.checked && !typeFacebookElement.checked) {
             auth = user.checkPassword(passwordElement.value);
-            break;
-        case typeGoogleElement.checked:
-            auth = user.checkGoogleLogin('secret_token_google');
-            break;
-        case typeFacebookElement.checked:
-            debugger;
-            auth = user.getFacebookLogin('secret_token_fb');
-            break;
+        }
     }
+    debugger;
 
     if(auth) {
         alert('login success');
