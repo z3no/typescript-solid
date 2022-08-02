@@ -180,8 +180,35 @@ This principle aims to separate behaviours so that if bugs arise as a result of 
 ### **O** - Open-Closed Principle
 
 The ***Open-Closed Principle*** requires that **Classes should be open for extension and closed for modification.**
+In doing so, we stop ourselves from modifying existing code and causing potential new bugs in an otherwise ***happy*** application.
 
 **Modification** means changing the code of an existing Class and **extension** means adding new functionality.
+
+Let's explore the concept with a quick code example. Imagine we have implemented a Guitar class. 🎸 It's fully fledged and even has a volume knob:
+
+```typescript
+    class Guitar {
+        private _model : string;
+        private _volume : number;
+        
+        //constructors, getters, setters
+    }
+```
+
+We launch the app and everyone loves it! But after a few months we decide the guitar is a little boring and it could use a cool flame pattern to make it look more rock and roll.
+At this point, it might be tempting to just open the Guitar class and add a flame pattern. But who knows what errors that might throw up in our application.
+
+Instead whe should **stick to the open-closed principle and simply extend our Guitar class:**
+
+```typescript
+    class SuperCoolGuitarWithFlames extends Guitar {
+        private _flameColor : string;
+        
+        //constructor, getters, setters
+    }
+```
+
+By **extending** the Guitar class we can be sure that our existing app won't be affected.
 
 #### To Do:
 - [x] Refactor the code from old.ts
