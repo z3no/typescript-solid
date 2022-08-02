@@ -1,6 +1,6 @@
-import { Animal } from "./animal";
+import {Animal} from "./animal";
 
-export class Parrot extends Animal{
+export class Lion extends Animal{
 
     constructor(name: string, type: string, sound: string) {
         super(name, type, sound);

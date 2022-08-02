@@ -1,15 +1,9 @@
-class Dog {
-    private _name;
+import {Animal} from "./animal";
 
-    set name(value) {
-        this._name = value;
+export class Dog extends Animal{
+
+    constructor(name: string, type: string, sound: string) {
+        super(name, type, sound);
     }
 
-    get name() {
-        return this._name;
-    }
-
-    get type() {
-        return 'dog';
-    }
 }
