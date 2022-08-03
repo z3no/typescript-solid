@@ -212,6 +212,10 @@ Instead whe should **stick to the open-closed principle and simply extend our Gu
 
 By **extending** the Guitar class we can be sure that our existing app won't be affected.
 
+#### Goal:
+This principle aims to extend a Class's behaviour without changing the existing behaviour of that Class.
+This is to avoid causing bugs wherever the Class is being used.
+
 #### To Do:
 - [x] Refactor the code from old.ts
 - What we need:
@@ -270,6 +274,9 @@ We can solve this in the following way:
     }
 ```
 By implementing a `Shape` interface that will have to be implemented by every new shape we add. We can then use the area() method and make it return the right calculations for each new shape.
+
+#### Goal:
+This principle aims to enforce consistency so that the parent Class or its child Class can be used in the same way without any errors.
 
 #### To Do:
 - [x] Refactor the Discount Class from old.ts, made an interface from Discount
@@ -337,8 +344,11 @@ And finally, we can leave the dangerous stuff to the reckless people:
     }
 ```
 
+#### Goal:
+This principle aims at splitting a set of actions into smaller sets so that a Class executes **ONLY** the set of actions it requires.
+
 #### To Do:
-- [ ] Refactor old.ts
+- [x] Refactor old.ts
 - [x] Look at the 2 different users
   - User
   - Admin
@@ -418,6 +428,25 @@ class PostService {
 }
 ```
 
+- High-level modules should not depend on low-level modules. Both should depend on the abstraction.
+- Abtstractions should not depend on details. Details should depend on abstractions.
+
+**High-level Module (or Class):** Class that executes an action with a tool.
+**Low-level Module (or Class):** The tool that is needed to execute the action.
+**Abstraction:** Represents an interface that connects the two Classes.
+**Details:** How the tool works.
+
+The Dependency Inversion principle says a Class should not be fused with the tool it uses to execute an action.
+Rather, it should be fused to the interface that will allow the tool to connect to the Class.
+
+#### Goal:
+This principle aims at reducing the dependency of a high-level Class on the low-level Class by introducing an interface.
+
+#### To Do:
+
+
+
+
 The SOLID principles represent the cornerstone of ***state-of-the-art*** software. When combined, they make it easier for programmers to develop code that's easier to understand, extend and maintain.
 
 
@@ -428,3 +457,5 @@ The SOLID principles represent the cornerstone of ***state-of-the-art*** softwar
 [How to explain object-oriented programming concepts to a 6-year-old](https://www.freecodecamp.org/news/object-oriented-programming-concepts-21bb035f7260/)
 [The SOLID Principles of Object-Oriented Programming Explained in Plain English](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/)
 [SOLID principles using Typescript](https://medium.com/@alejandromarr/solid-principles-using-typescript-c475031efcd3)
+[The S.O.L.I.D Principles in Pictures](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
+[A Solid Guide to SOLID principles](https://www.baeldung.com/solid-principles)
