@@ -442,20 +442,18 @@ Rather, it should be fused to the interface that will allow the tool to connect 
 #### Goal:
 This principle aims at reducing the dependency of a high-level Class on the low-level Class by introducing an interface.
 
-#### To Do:
-
-
-
+*****
 
 The SOLID principles represent the cornerstone of ***state-of-the-art*** software. When combined, they make it easier for programmers to develop code that's easier to understand, extend and maintain.
 
 
 ## Resources:
 
-[The Four Pillars of Object  Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)
-[Object-Oriented Programming for Kids](https://funtech.co.uk/latest/explain-object-oriented-programming-to-kids#:~:text=The%20simplest%20way%20to%20explain,size%20and%20year%20as%20attributes.)
-[How to explain object-oriented programming concepts to a 6-year-old](https://www.freecodecamp.org/news/object-oriented-programming-concepts-21bb035f7260/)
-[The SOLID Principles of Object-Oriented Programming Explained in Plain English](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/)
-[SOLID principles using Typescript](https://medium.com/@alejandromarr/solid-principles-using-typescript-c475031efcd3)
-[The S.O.L.I.D Principles in Pictures](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)
-[A Solid Guide to SOLID principles](https://www.baeldung.com/solid-principles)
+[The Four Pillars of Object  Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)  
+[Object-Oriented Programming for Kids](https://funtech.co.uk/latest/explain-object-oriented-programming-to-kids#:~:text=The%20simplest%20way%20to%20explain,size%20and%20year%20as%20attributes.)  
+[How to explain object-oriented programming concepts to a 6-year-old](https://www.freecodecamp.org/news/object-oriented-programming-concepts-21bb035f7260/)  
+[The SOLID Principles of Object-Oriented Programming Explained in Plain English](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/)  
+[SOLID principles using Typescript](https://medium.com/@alejandromarr/solid-principles-using-typescript-c475031efcd3)  
+[The S.O.L.I.D Principles in Pictures](https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898)  
+[A Solid Guide to SOLID principles](https://www.baeldung.com/solid-principles)  
+[TypeScript is JavaScript with syntax for types](https://www.typescriptlang.org/)  
