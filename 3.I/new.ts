@@ -87,43 +87,31 @@ const resetPasswordElement = <HTMLAnchorElement>document.querySelector('#resetPa
 
 let guest = new User();
 let admin = new Admin();
-let googleBot = new GoogleBot();
+let bot = new GoogleBot();
 
 document.querySelector('#login-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    let user;
-
-    if(loginAsAdminElement.checked) {
-        user = admin;
-    } else if (!loginAsAdminElement.checked && typeGoogleElement.checked){
-        user = googleBot;
-    } else {
-        user = guest;
-    }
-    debugger;
-
     let auth = false;
-    if(user === guest){
-        user.setFacebookToken('secret_token_fb');
-        switch(true) {
-            case typePasswordElement.checked:
-                auth = user.checkPassword(passwordElement.value);
-                break;
-            case typeFacebookElement.checked:
-                debugger;
-                auth = user.getFacebookLogin('secret_token_fb');
-                break;
-        }
-    } else if(user === googleBot) {
-        user.setGoogleToken('secret_token_google');
-        auth = user.checkGoogleLogin('secret_token_google');
-    } else if(user === admin) {
-        if (!typeGoogleElement.checked && !typeFacebookElement.checked) {
-            auth = user.checkPassword(passwordElement.value);
-        }
+
+    //Admin
+    if(loginAsAdminElement.checked && typePasswordElement.checked){
+        auth = admin.checkPassword(passwordElement.value);
+    }
+    //User
+    else if(typePasswordElement.checked && !loginAsAdminElement.checked){
+        guest.setGoogleToken('secret_token_google');
+        guest.setFacebookToken('secret_token_fb');
+        auth = guest.checkPassword(passwordElement.value);
+    }
+    else if(typeFacebookElement.checked && !loginAsAdminElement.checked){
+        auth = guest.getFacebookLogin('secret_token_fb');
+    }
+    else if (typeGoogleElement.checked && !loginAsAdminElement.checked){
+        auth = guest.checkGoogleLogin('secret_token_google');
     }
     debugger;
+
 
     if(auth) {
         alert('login success');
