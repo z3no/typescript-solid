@@ -84,6 +84,7 @@ const typeGoogleElement = <HTMLInputElement>document.querySelector('#typeGoogle'
 const typeFacebookElement = <HTMLInputElement>document.querySelector('#typeFacebook');
 const loginAsAdminElement = <HTMLInputElement>document.querySelector('#loginAsAdmin');
 const resetPasswordElement = <HTMLAnchorElement>document.querySelector('#resetPassword');
+const loginAsGoogleBot = <HTMLInputElement>document.querySelector('#loginAsGoogleBot');
 
 let guest = new User();
 let admin = new Admin();
@@ -104,11 +105,15 @@ document.querySelector('#login-form').addEventListener('submit', (event) => {
         guest.setFacebookToken('secret_token_fb');
         auth = guest.checkPassword(passwordElement.value);
     }
-    else if(typeFacebookElement.checked && !loginAsAdminElement.checked){
+    else if(typeFacebookElement.checked && !loginAsAdminElement.checked && !loginAsGoogleBot.checked){
         auth = guest.getFacebookLogin('secret_token_fb');
     }
     else if (typeGoogleElement.checked && !loginAsAdminElement.checked){
         auth = guest.checkGoogleLogin('secret_token_google');
+    }
+    //Google Bot
+    else if(loginAsGoogleBot.checked && typeGoogleElement.checked && !loginAsAdminElement.checked){
+        auth = bot.checkGoogleLogin('secret_token_google');
     }
     debugger;
 
